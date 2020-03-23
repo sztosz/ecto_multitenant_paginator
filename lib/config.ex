@@ -1,8 +1,8 @@
-defmodule EctoPaginator.Config do
+defmodule EctoMultitenantPaginator.Config do
   @moduledoc """
-  A `EctoPaginator.Config` can be created with a `caller`, a `page_number`, a `page_size` and a `module`. It can optionally be provided a `Keyword` of `options`.
+  A `EctoMultitenantPaginator.Config` can be created with a `caller`, a `page_number`, a `page_size` and a `module`. It can optionally be provided a `Keyword` of `options`.
 
-      %EctoPaginator.Config{
+      %EctoMultitenantPaginator.Config{
         caller: self(),
         page_number: 2,
         page_size: 5,

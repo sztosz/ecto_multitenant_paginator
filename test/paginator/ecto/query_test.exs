@@ -1,12 +1,12 @@
-defmodule EctoPaginator.Paginator.Ecto.QueryTest do
+defmodule EctoMultitenantPaginator.Paginator.Ecto.QueryTest do
   @moduledoc false
 
-  use EctoPaginator.Ecto.TestCase
+  use EctoMultitenantPaginator.Ecto.TestCase
 
-  alias EctoPaginator.Ecto.Comment
-  alias EctoPaginator.Ecto.KeyValue
-  alias EctoPaginator.Ecto.Post
-  alias EctoPaginator.Ecto.Repo
+  alias EctoMultitenantPaginator.Ecto.Comment
+  alias EctoMultitenantPaginator.Ecto.KeyValue
+  alias EctoMultitenantPaginator.Ecto.Post
+  alias EctoMultitenantPaginator.Ecto.Repo
 
   defp create_posts do
     unpublished_post =
@@ -224,10 +224,17 @@ defmodule EctoPaginator.Paginator.Ecto.QueryTest do
       assert page.total_entries == 2
     end
 
-    test "can be provided a EctoPaginator.Config directly" do
+    test "can be provided a EctoMultitenantPaginator.Config directly" do
       posts = create_posts()
-      config = %EctoPaginator.Config{module: Repo, page_number: 2, page_size: 4, options: []}
-      page = Post |> Post.published() |> EctoPaginator.paginate(config)
+
+      config = %EctoMultitenantPaginator.Config{
+        module: Repo,
+        page_number: 2,
+        page_size: 4,
+        options: []
+      }
+
+      page = Post |> Post.published() |> EctoMultitenantPaginator.paginate(config)
       assert page.page_size == 4
       assert page.page_number == 2
       assert page.entries == Enum.drop(posts, 4)
@@ -238,7 +245,9 @@ defmodule EctoPaginator.Paginator.Ecto.QueryTest do
       posts = create_posts()
 
       page =
-        Post |> Post.published() |> EctoPaginator.paginate(module: Repo, page: 2, page_size: 4)
+        Post
+        |> Post.published()
+        |> EctoMultitenantPaginator.paginate(module: Repo, page: 2, page_size: 4)
 
       assert page.page_size == 4
       assert page.page_number == 2
@@ -252,7 +261,7 @@ defmodule EctoPaginator.Paginator.Ecto.QueryTest do
       page =
         Post
         |> Post.published()
-        |> EctoPaginator.paginate(%{
+        |> EctoMultitenantPaginator.paginate(%{
           "module" => Repo,
           "page" => 2,
           "page_size" => 4

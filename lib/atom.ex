@@ -1,10 +1,10 @@
-defimpl EctoPaginator.Paginator, for: Atom do
+defimpl EctoMultitenantPaginator.Paginator, for: Atom do
   @moduledoc false
 
-  @spec paginate(atom, EctoPaginator.Config.t()) :: EctoPaginator.Page.t()
+  @spec paginate(atom, EctoMultitenantPaginator.Config.t()) :: EctoMultitenantPaginator.Page.t()
   def paginate(atom, config) do
     atom
     |> Ecto.Queryable.to_query()
-    |> EctoPaginator.Paginator.paginate(config)
+    |> EctoMultitenantPaginator.Paginator.paginate(config)
   end
 end

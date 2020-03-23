@@ -1,18 +1,18 @@
-defmodule EctoPaginator.MixProject do
+defmodule EctoMultitenantPaginator.MixProject do
   @moduledoc false
 
   use Mix.Project
 
   def project do
     [
-      app: :ecto_paginator,
+      app: :ecto_multitenant_paginator,
       version: "0.1.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
       package: package(),
       description: description(),
-      source_url: "https://github.com/sztosz/ecto_paginator"
+      source_url: "https://github.com/sztosz/ecto_multitenant_paginator"
     ]
   end
 
@@ -40,7 +40,7 @@ defmodule EctoPaginator.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"github" => "https://github.com/sztosz/ecto_paginator"}
+      links: %{"github" => "https://github.com/sztosz/ecto_multitenant_paginator"}
     ]
   end
 

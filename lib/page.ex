@@ -1,6 +1,6 @@
-defmodule EctoPaginator.Page do
+defmodule EctoMultitenantPaginator.Page do
   @moduledoc """
-  A `EctoPaginator.Page` has 5 fields that can be accessed: `entries`, `page_number`, `page_size`, `total_entries` and `total_pages`.
+  A `EctoMultitenantPaginator.Page` has 5 fields that can be accessed: `entries`, `page_number`, `page_size`, `total_entries` and `total_pages`.
 
       page = MyApp.Module.paginate(params)
 
@@ -16,25 +16,28 @@ defmodule EctoPaginator.Page do
   @type t :: %__MODULE__{}
 
   defimpl Enumerable do
-    @spec count(EctoPaginator.Page.t()) :: {:error, Enumerable.EctoPaginator.Page}
+    @spec count(EctoMultitenantPaginator.Page.t()) ::
+            {:error, Enumerable.EctoMultitenantPaginator.Page}
     def count(_page), do: {:error, __MODULE__}
 
-    @spec member?(EctoPaginator.Page.t(), term) :: {:error, Enumerable.EctoPaginator.Page}
+    @spec member?(EctoMultitenantPaginator.Page.t(), term) ::
+            {:error, Enumerable.EctoMultitenantPaginator.Page}
     def member?(_page, _value), do: {:error, __MODULE__}
 
-    @spec reduce(EctoPaginator.Page.t(), Enumerable.acc(), Enumerable.reducer()) ::
+    @spec reduce(EctoMultitenantPaginator.Page.t(), Enumerable.acc(), Enumerable.reducer()) ::
             Enumerable.result()
-    def reduce(%EctoPaginator.Page{entries: entries}, acc, fun) do
+    def reduce(%EctoMultitenantPaginator.Page{entries: entries}, acc, fun) do
       Enumerable.reduce(entries, acc, fun)
     end
 
-    @spec slice(EctoPaginator.Page.t()) :: {:error, Enumerable.EctoPaginator.Page}
+    @spec slice(EctoMultitenantPaginator.Page.t()) ::
+            {:error, Enumerable.EctoMultitenantPaginator.Page}
     def slice(_page), do: {:error, __MODULE__}
   end
 
   defimpl Collectable do
-    @spec into(EctoPaginator.Page.t()) ::
-            {term, (term, Collectable.command() -> EctoPaginator.Page.t() | term)}
+    @spec into(EctoMultitenantPaginator.Page.t()) ::
+            {term, (term, Collectable.command() -> EctoMultitenantPaginator.Page.t() | term)}
     def into(original) do
       original_entries = original.entries
       impl = Collectable.impl_for(original_entries)

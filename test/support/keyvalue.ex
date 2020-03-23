@@ -1,4 +1,4 @@
-defmodule EctoPaginator.Ecto.KeyValue do
+defmodule EctoMultitenantPaginator.Ecto.KeyValue do
   @moduledoc false
 
   use Ecto.Schema

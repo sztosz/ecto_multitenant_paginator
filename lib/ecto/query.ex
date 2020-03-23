@@ -1,12 +1,13 @@
-defimpl EctoPaginator.Paginator, for: Ecto.Query do
+defimpl EctoMultitenantPaginator.Paginator, for: Ecto.Query do
   import Ecto.Query
 
-  alias EctoPaginator.Config
-  alias EctoPaginator.Page
+  alias EctoMultitenantPaginator.Config
+  alias EctoMultitenantPaginator.Page
 
   @moduledoc false
 
-  @spec paginate(Ecto.Query.t(), EctoPaginator.Config.t()) :: EctoPaginator.Page.t()
+  @spec paginate(Ecto.Query.t(), EctoMultitenantPaginator.Config.t()) ::
+          EctoMultitenantPaginator.Page.t()
   def paginate(query, %Config{
         page_size: page_size,
         page_number: page_number,

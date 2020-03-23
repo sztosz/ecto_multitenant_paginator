@@ -1,4 +1,4 @@
-defmodule EctoPaginator.Ecto.Post do
+defmodule EctoMultitenantPaginator.Ecto.Post do
   @moduledoc false
 
   use Ecto.Schema
@@ -10,7 +10,7 @@ defmodule EctoPaginator.Ecto.Post do
     field(:body, :string)
     field(:published, :boolean)
 
-    has_many(:comments, EctoPaginator.Ecto.Comment)
+    has_many(:comments, EctoMultitenantPaginator.Ecto.Comment)
 
     timestamps()
   end

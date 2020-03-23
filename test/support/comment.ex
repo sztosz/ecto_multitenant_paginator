@@ -1,4 +1,4 @@
-defmodule EctoPaginator.Ecto.Comment do
+defmodule EctoMultitenantPaginator.Ecto.Comment do
   @moduledoc false
 
   use Ecto.Schema
@@ -6,7 +6,7 @@ defmodule EctoPaginator.Ecto.Comment do
   schema "comments" do
     field(:body, :string)
 
-    belongs_to(:post, EctoPaginator.Ecto.Post)
+    belongs_to(:post, EctoMultitenantPaginator.Ecto.Post)
 
     timestamps()
   end

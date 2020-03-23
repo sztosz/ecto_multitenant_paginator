@@ -1,11 +1,11 @@
-defprotocol EctoPaginator.Paginator do
+defprotocol EctoMultitenantPaginator.Paginator do
   @moduledoc """
-  The `EctoPaginator.Paginater` protocol should be implemented for any type that requires pagination.
+  The `EctoMultitenantPaginator.Paginater` protocol should be implemented for any type that requires pagination.
   """
 
   @doc """
-  The paginate function will be invoked with the item to paginate along with a `EctoPaginator.Config`. It is expected to return a `EctoPaginator.Page`.
+  The paginate function will be invoked with the item to paginate along with a `EctoMultitenantPaginator.Config`. It is expected to return a `EctoMultitenantPaginator.Page`.
   """
-  @spec paginate(any, EctoPaginator.Config.t()) :: EctoPaginator.Page.t()
+  @spec paginate(any, EctoMultitenantPaginator.Config.t()) :: EctoMultitenantPaginator.Page.t()
   def paginate(pageable, config)
 end
