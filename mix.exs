@@ -9,7 +9,10 @@ defmodule EctoPaginator.MixProject do
       version: "0.1.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
-      deps: deps()
+      deps: deps(),
+      package: package(),
+      description: description(),
+      source_url: "https://github.com/sztosz/ecto_paginator"
     ]
   end
 
@@ -32,6 +35,19 @@ defmodule EctoPaginator.MixProject do
       {:ex_doc, "~> 0.20.0", only: :dev},
       {:postgrex, "~> 0.15.0", only: :test}
     ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT"],
+      links: %{"github" => "https://github.com/sztosz/ecto_paginator"}
+    ]
+  end
+
+  defp description() do
+    """
+    Scrivener and Scrivener.Ecto rewrite with added support of multitenancy via prefix Repo option.
+    """
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
